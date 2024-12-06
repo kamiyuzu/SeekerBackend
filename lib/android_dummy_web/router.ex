@@ -1,5 +1,6 @@
 defmodule AndroidDummyWeb.Router do
   use AndroidDummyWeb, :router
+  alias AndroidDummyWeb.Plugs.JWT
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,6 +15,10 @@ defmodule AndroidDummyWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :jwt do
+    plug JWT
+  end
+
   scope "/", AndroidDummyWeb do
     pipe_through :browser
 
@@ -23,8 +28,13 @@ defmodule AndroidDummyWeb.Router do
   # Other scopes may use custom stacks.
   scope "/api", AndroidDummyWeb do
     pipe_through :api
-
     post "/login", LoginController, :login
+
+    scope "/users" do
+      pipe_through :jwt
+      get "/:username/assets", AssetController, :index
+      resources "/:username/assets", AssetController, except: [:index, :new, :edit]
+    end
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

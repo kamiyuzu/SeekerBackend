@@ -60,6 +60,7 @@ defmodule AndroidDummy.MixProject do
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
       {:joken, "~> 2.6"},
+      {:faker, "~> 0.18"},
     ]
   end
 
