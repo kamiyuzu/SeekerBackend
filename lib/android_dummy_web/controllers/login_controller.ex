@@ -24,7 +24,11 @@ defmodule AndroidDummyWeb.LoginController do
 end
 
   def login(conn, %{"username" => "user" <> _number, "password" => _password} = _params) do
-      {:ok, token, _claims} = Token.generate_and_sign(%{"exp" => Joken.CurrentTime.OS.current_time() + 60})
+      {:ok, token, _claims} = Token.generate_and_sign(%{"exp" => Joken.CurrentTime.OS.current_time() + 5})
       json(conn, %{token: token})
+  end
+
+  def validate_jwt(conn, _params) do
+    send_resp(conn, 200, "")
   end
 end

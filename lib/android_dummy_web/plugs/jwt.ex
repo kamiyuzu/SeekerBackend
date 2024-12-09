@@ -16,11 +16,13 @@ defmodule AndroidDummyWeb.Plugs.JWT do
     case Token.verify_and_validate(token) do
       {:ok, _claims_map} ->
         conn
-      {:error, error} ->
+      {:error, error} when is_list(error) ->
         error_message = Access.fetch!(error, :message)
-        conn
-        |> put_status(403)
-        |> json(%{error: error_message})
+        send_resp(conn, 403, error_message)
+        |> halt()
+      {:error, error} when is_atom(error) ->
+        send_resp(conn, 403, Atom.to_string(error))
+        |> halt()
     end
   end
 
