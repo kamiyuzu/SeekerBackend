@@ -18,5 +18,6 @@ defmodule AndroidDummy.Assets.Asset do
     asset
     |> cast(attrs, [:latitude, :longitude, :set, :username, :name, :description])
     |> validate_required([:latitude, :longitude, :set, :username, :name, :description])
+    |> unique_constraint(:unique_asset, name: :unique_asset_idx)
   end
 end

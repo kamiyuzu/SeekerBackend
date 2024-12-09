@@ -15,7 +15,7 @@ defmodule AndroidDummyWeb.AssetController do
     asset_params =
       asset_params
       |> Map.put("name", Faker.Cat.name())
-      |> Map.put("description", "This asset was located at latitude: " <> asset_params["latitude"] <> " longitude: " <> asset_params["longitude"] <> ".\n" <> Faker.Lorem.paragraph(1..3))
+      |> Map.put("description", "This asset was located at latitude: " <> asset_params["latitude"] <> ", longitude: " <> asset_params["longitude"] <> ".\n" <> Faker.Lorem.paragraph(1..3))
 
     case Assets.get_asset_if_exist(asset_params) do
       nil ->

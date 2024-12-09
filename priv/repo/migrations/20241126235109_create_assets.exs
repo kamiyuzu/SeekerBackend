@@ -12,5 +12,7 @@ defmodule AndroidDummy.Repo.Migrations.CreateAssets do
 
       timestamps(type: :utc_datetime)
     end
+
+    create unique_index(:assets, [:username, :latitude, :longitude, :set], name: :unique_asset_idx)
   end
 end
