@@ -33,8 +33,7 @@ defmodule AndroidDummyWeb.Router do
     scope "/users" do
       pipe_through :jwt
       get "/validate", LoginController, :validate_jwt
-      get "/:username/assets", AssetController, :index
-      resources "/:username/assets", AssetController, except: [:index, :new, :edit]
+      resources "/:username/assets", AssetController, except: [:new, :edit]
     end
   end
 

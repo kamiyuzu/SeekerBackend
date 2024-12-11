@@ -36,7 +36,7 @@ defmodule AndroidDummyWeb.AssetController do
     render(conn, :show, asset: asset)
   end
 
-  def update(conn, %{"id" => id, "asset" => asset_params}) do
+  def update(conn, %{"id" => id} = asset_params) do
     asset = Assets.get_asset!(id)
 
     with {:ok, %Asset{} = asset} <- Assets.update_asset(asset, asset_params) do

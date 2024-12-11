@@ -23,7 +23,8 @@ defmodule AndroidDummyWeb.AssetJSON do
       set: asset.set,
       username: asset.username,
       name: asset.name,
-      description: asset.description
+      description: asset.description,
+      tag: asset.tag
     }
   end
 end

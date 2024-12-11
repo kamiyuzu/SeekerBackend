@@ -9,6 +9,7 @@ defmodule AndroidDummy.Repo.Migrations.CreateAssets do
       add :username, :string
       add :name, :string
       add :description, :string
+      add :tag, :string
 
       timestamps(type: :utc_datetime)
     end

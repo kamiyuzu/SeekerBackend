@@ -74,7 +74,7 @@ defmodule AndroidDummy.Assets do
   """
   def update_asset(%Asset{} = asset, attrs) do
     asset
-    |> Asset.changeset(attrs)
+    |> Asset.changeset_patch(attrs)
     |> Repo.update()
   end
 
@@ -105,5 +105,9 @@ defmodule AndroidDummy.Assets do
   """
   def change_asset(%Asset{} = asset, attrs \\ %{}) do
     Asset.changeset(asset, attrs)
+  end
+
+  def changeset_patch(%Asset{} = asset, attrs \\ %{}) do
+    Asset.changeset_patch(asset, attrs)
   end
 end
