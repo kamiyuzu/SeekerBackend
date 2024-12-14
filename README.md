@@ -1,5 +1,7 @@
 # AndroidDummy
 
+Backend for [Android Kotlin App](https://github.com/kamiyuzu/SeekerKotlinApp)
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
